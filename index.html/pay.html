@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe Payment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #50a5be;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .payment-container {
+            background: rgb(111, 165, 165);
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            background: #ececec;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-option img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .pay-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .pay-btn:hover {
+            background: #357bd8;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <img src="phonepe.jpg" alt="PhonePe Logo" class="logo">
+        <h2>Complete Your Payment</h2>
+
+        <div class="payment-option" onclick="selectPayment('UPI')">
+            <img src="upi_icon.png" alt="UPI"> <span>Pay via UPI</span>
+        </div>
+
+        <div class="payment-option" onclick="selectPayment('Credit/Debit Card')">
+            <img src="card_icon.png" alt="Card"> <span>Credit/Debit Card</span>
+        </div>
+
+        <div class="payment-option" onclick="selectPayment('Wallet')">
+            <img src="wallet_icon.png" alt="Wallet"> <span>PhonePe Wallet</span>
+        </div>
+
+        <button class="pay-btn" onclick="processPayment()">Pay Now</button>
+        <p class="success-message" id="successMessage">✅ Payment Successful!</p>
+    </div>
+
+    <script>
+        let selectedPayment = '';
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            alert(method + " selected!");
+        }
+
+        function processPayment() {
+            if (selectedPayment === '') {
+                alert("Please select a payment method.");
+            } else {
+                document.getElementById("successMessage").style.display = "block";
+                alert("Payment Successful using " + selectedPayment);
+            }
+        }
+    </script>
+
+</body>
+</html>
